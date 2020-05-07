@@ -48,8 +48,8 @@ mkdir -p $DATA_RAW
 # DOWNLOAD CORPORA
 if [ "$corpus" == "wiki" ]; then
     # Wiki dump name and link
-    WIKI_DUMP_NAME=${lg}wiki-$latest-pages-articles-multistream.xml.bz2
-    WIKI_DUMP_LINK=https://dumps.wikimedia.org/${lg}wiki/$latest/$WIKI_DUMP_NAME
+    WIKI_DUMP_NAME=${lg}wiki-latest-pages-articles-multistream.xml.bz2
+    WIKI_DUMP_LINK=https://dumps.wikimedia.org/${lg}wiki/latest/$WIKI_DUMP_NAME
 
     # download Wikipedia dump
     echo "***** Downloading $lg $corpus dump from $WIKI_DUMP_LINK *****"
