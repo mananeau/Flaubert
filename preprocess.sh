@@ -34,9 +34,9 @@ output=$DATA_PATH_CLEAN/$lg.$corpus.processed.nc
 TOOLS_PATH='tools'
 
 # Tokenizer, cleaner and sentence splitter
-TOKENIZER=$TOOLS_PATH/tokenize.sh
+#TOKENIZER=$TOOLS_PATH/tokenize.sh
 CLEANER=$TOOLS_PATH/clean_text.py
-SENT_SPLITTER=$TOOLS_PATH/split_sentences.py
+#SENT_SPLITTER=$TOOLS_PATH/split_sentences.py
 
 # Create folder to save processed data
 # exit if raw data is not available in folder yet
@@ -78,8 +78,8 @@ function preprocess {
             | grep -P '^(?!.*(.)\1{5,})' \
             | grep -P '^(?!.*(..)\1{5,})' \
             | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+|\p{Lo}+//g' \
-            | $TOKENIZER $lg \
-            | python $SENT_SPLITTER \
+            #| $TOKENIZER $lg \
+            #| python $SENT_SPLITTER \
             | grep -P -v '(\w ){10,}' \
             | grep -P -v '(\w |\w\w ){10,}' \
             | grep -P -v '^(\/ [>.*\d])' \
@@ -115,8 +115,8 @@ function preprocess {
                 | grep -v "<br|br/>" \
                 | grep -P -v 'noinclude|pagequality|user=|\{\{|\}\}|\\|<\/\w+>|\|\w*\|\/>|<\w+>|<section|style=' \
                 | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+//g' \
-                | $TOKENIZER $lg \
-                | python $SENT_SPLITTER \
+                #| $TOKENIZER $lg \
+                #| python $SENT_SPLITTER \
                 | grep -P -v '(\w ){15,}' \
                 | grep -P -v '(\w |\w\w ){10,}' \
                 | grep -P -v '^\s*$' \
@@ -149,8 +149,8 @@ function preprocess {
                 | grep -P -v '[A-Za-z0-9]{30,}' \
                 | grep -P -v '(\w{4,}\d{3,})|(\d{3,}\w{4,})' \
                 | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+|\p{Lo}+//g' \
-                | $TOKENIZER $lg \
-                | python $SENT_SPLITTER \
+                #| $TOKENIZER $lg \
+                #| python $SENT_SPLITTER \
                 | grep -P -v '(\w ){15,}' \
                 | grep -P -v '(\w |\w\w ){10,}' \
                 | grep -P -v '^:' \
@@ -182,8 +182,8 @@ if [ "$corpus" == "wiki" ]; then
         | grep -P '^(?!.*(..)\1{5,})' \
         | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+//g' \
         | python $CLEANER -i 1 \
-        | $TOKENIZER $lg \
-        | python $SENT_SPLITTER \
+        #| $TOKENIZER $lg \
+        #| python $SENT_SPLITTER \
         | grep -P -v '^\s*$' \
         | grep -P -v '(\w ){15,}' \
         | grep -P -v '(\w |\w\w ){10,}' \
@@ -212,7 +212,7 @@ elif [ "$corpus" == "gutenberg" ]; then
         | grep -P -v '[A-Za-z0-9]{30,}' \
         | grep -P -v '(\w{4,}\d{3,})|(\d{3,}\w{4,})' \
         | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+//g' \
-        | $TOKENIZER $lg \
+        #| $TOKENIZER $lg \
         | grep -P -v '(\w ){15,}' \
         | grep -P -v '(\w |\w\w ){10,}' \
         | grep -P -v '^\s*$' \
