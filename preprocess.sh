@@ -213,11 +213,11 @@ elif [ "$corpus" == "gutenberg" ]; then
         | grep -P -v '(\w{4,}\d{3,})|(\d{3,}\w{4,})' \
         | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+//g' \
         #| $TOKENIZER $lg \
-        | grep -P -v '(\w ){15,}' \
-        | grep -P -v '(\w |\w\w ){10,}' \
-        | grep -P -v '^\s*$' \
-        | grep -P '.{20,}' \
-        > $output
+        #| grep -P -v '(\w ){15,}' \
+        #| grep -P -v '(\w |\w\w ){10,}' \
+        #| grep -P -v '^\s*$' \
+        #| grep -P '.{20,}' \
+        #> $output
 
         rm $DATA_PATH_CLEAN/*.txt
         echo "Removed txt files."
