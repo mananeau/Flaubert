@@ -80,13 +80,13 @@ function preprocess {
             | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+|\p{Lo}+//g' \
             #| $TOKENIZER $lg \
             #| python $SENT_SPLITTER \
-            | grep -P -v '(\w ){10,}' \
-            | grep -P -v '(\w |\w\w ){10,}' \
-            | grep -P -v '^(\/ [>.*\d])' \
-            | grep -P -v '^(: \d+)|^(: [()"-:+])' \
-            | grep -P -v '^\s*$' \
-            | grep -P '.{50,}' \
-            > "$fo"
+            #| grep -P -v '(\w ){10,}' \
+            #| grep -P -v '(\w |\w\w ){10,}' \
+            #| grep -P -v '^(\/ [>.*\d])' \
+            #| grep -P -v '^(: \d+)|^(: [()"-:+])' \
+            #| grep -P -v '^\s*$' \
+            #| grep -P '.{50,}' \
+            #> "$fo"
             echo "Finished cleaning and tokenizing data. Processed files are saved in $path_clean."
         else
             echo "Data has already been processed and saved in $path_clean."
@@ -117,11 +117,11 @@ function preprocess {
                 | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+//g' \
                 #| $TOKENIZER $lg \
                 #| python $SENT_SPLITTER \
-                | grep -P -v '(\w ){15,}' \
-                | grep -P -v '(\w |\w\w ){10,}' \
-                | grep -P -v '^\s*$' \
-                | grep -P '.{20,}' \
-                > "$fo.processed.nc"
+                #| grep -P -v '(\w ){15,}' \
+                #| grep -P -v '(\w |\w\w ){10,}' \
+                #| grep -P -v '^\s*$' \
+                #| grep -P '.{20,}' \
+                #> "$fo.processed.nc"
                 echo "Finished cleaning and tokenizing data. Processed files are saved in $path_clean."
             else
                 echo "Data has already been processed and saved in $path_clean."
@@ -151,12 +151,12 @@ function preprocess {
                 | perl -CSD -Mutf8 -pe 's/\p{Sk}+|\p{So}+|\p{Cn}+|\p{Co}+|\p{Cs}+|\p{M}+|\p{Lo}+//g' \
                 #| $TOKENIZER $lg \
                 #| python $SENT_SPLITTER \
-                | grep -P -v '(\w ){15,}' \
-                | grep -P -v '(\w |\w\w ){10,}' \
-                | grep -P -v '^:' \
-                | grep -P -v '^\s*$' \
-                | grep -P '.{20,}' \
-                > "$fo.processed.nc"
+                #| grep -P -v '(\w ){15,}' \
+                #| grep -P -v '(\w |\w\w ){10,}' \
+                #| grep -P -v '^:' \
+                #| grep -P -v '^\s*$' \
+                #| grep -P '.{20,}' \
+                #> "$fo.processed.nc"
 
                 echo "Finished cleaning and tokenizing data. Processed files are saved in $path_clean."
             else
@@ -184,11 +184,11 @@ if [ "$corpus" == "wiki" ]; then
         | python $CLEANER -i 1 \
         #| $TOKENIZER $lg \
         #| python $SENT_SPLITTER \
-        | grep -P -v '^\s*$' \
-        | grep -P -v '(\w ){15,}' \
-        | grep -P -v '(\w |\w\w ){10,}' \
-        | grep -P '.{10,}' \
-        > $output
+        #| grep -P -v '^\s*$' \
+        #| grep -P -v '(\w ){15,}' \
+        #| grep -P -v '(\w |\w\w ){10,}' \
+        #| grep -P '.{10,}' \
+        #> $output
         echo "***** Saved preprocessed data to $output *****"
     else
         echo "Data has been preprocessed and saved in $output."
